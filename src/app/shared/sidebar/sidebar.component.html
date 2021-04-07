@@ -1,0 +1,261 @@
+<div class="sidebar ps-scrollbar-y" data-color="orange" data-image="assets/dist/img/full-screen-image-3.jpg">
+    <!--
+                Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+                Tip 2: you can also add an image using data-image tag
+    
+            -->
+
+    <div class="logo">
+        <!-- <a [routerLink]="['/inicio']" href="#" class="simple-text logo-normal">
+                    Ct
+                </a> -->
+
+        <a [routerLink]="['/inicio']" href="#" class="simple-text logo-normal" style="text-align:center;">
+           {{nombreEmp}}
+        </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="info">
+                <div class="photo">
+                    <img src="assets/dist/img/default-avatar.png" />
+                </div>
+
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                        {{usuario.usu}}
+                                <b class="caret"></b>
+                            </span>
+                </a>
+
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">MP</span>
+                                <span class="sidebar-normal">My Profile</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">EP</span>
+                                <span class="sidebar-normal">Edit Profile</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">S</span>
+                                <span class="sidebar-normal">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav">
+            <li>
+                <a [routerLink]="['/inicio']" href="#" class="nav-link">
+                    <i class="pe-7s-graph"></i>
+                    <p>Inicio</p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#componentsExamples">
+                    <i class="pe-7s-plugin"></i>
+                    <p>Puestos
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="componentsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a [routerLink]="['/puesto']" href="#" class="nav-link">
+                                <span class="sidebar-mini">P</span>
+                                <span class="sidebar-normal">Puestos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/rol']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">R</span>
+                                <span class="sidebar-normal">Roles</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ambito']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">A</span>
+                                <span class="sidebar-normal">Ambitos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/actividadesCargo']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">AC</span>
+                                <span class="sidebar-normal">Actividades Cargo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#actividadesEsenciales">
+                                <i class="pe-7s-plugin"></i>
+                                <p>Actividades Esenciales
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <div class="collapse" id="actividadesEsenciales">
+                                <ul class="nav">
+                                    <li>
+                                        <a [routerLink]="['/actividadesEsenciales']" href="#" class="nav-link">
+                                            <span class="sidebar-mini">AE</span>
+                                            <span class="sidebar-normal">Actividades Esenciales</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/conocimiento']" href="#" class="nav-link" type="submit">
+                                            <span class="sidebar-mini">CA</span>
+                                            <span class="sidebar-normal">Conocimiento Adicional</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-toggle="collapse" href="#experienciaLaboral">
+                                <i class="pe-7s-plugin"></i>
+                                <p>Experiencia Laboral
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <div class="collapse" id="experienciaLaboral">
+                                <ul class="nav">
+                                    <!-- <li>
+                                        <a [routerLink]="['/experienciaPuesto']" href="#" class="nav-link" type="submit">
+                                            <span class="sidebar-mini">ExP</span>
+                                            <span class="sidebar-normal">Experiencia Puestos</span>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a [routerLink]="['/experiencia']" href="#" class="nav-link">
+                                            <span class="sidebar-mini">ExL</span>
+                                            <span class="sidebar-normal">Experiencia Laboral</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-toggle="collapse" href="#competencias">
+                                <i class="pe-7s-plugin"></i>
+                                <p>Competencias
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <div class="collapse" id="competencias">
+                                <ul class="nav">
+                                    <li>
+                                        <a data-toggle="collapse" href="#competenciasT">
+                                            <i class="pe-7s-plugin"></i>
+                                            <p>Competencias Tecnicas
+                                                <b class="caret"></b>
+                                            </p>
+                                        </a>
+                                        <div class="collapse" id="competenciasT">
+                                            <ul class="nav">
+                                                <!-- <li>
+                                                    <a [routerLink]="['/compTecPuesto']" href="#" class="nav-link">
+                                                        <span class="sidebar-mini">CP</span>
+                                                        <span class="sidebar-normal">Competencias Puesto</span>
+                                                    </a>
+                                                </li> -->
+                                                <li>
+                                                    <a [routerLink]="['/ctComportamiento']" href="#" class="nav-link">
+                                                        <span class="sidebar-mini">CT</span>
+                                                        <span class="sidebar-normal">Competencias Tecnicas</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a [routerLink]="['/competenciaTecnica']" href="#" class="nav-link" type="submit">
+                                                        <span class="sidebar-mini">DT</span>
+                                                        <span class="sidebar-normal">Definiciones Competencia</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="collapse" href="#competenciasC">
+                                            <i class="pe-7s-plugin"></i>
+                                            <p>Competencias Conductuales
+                                                <b class="caret"></b>
+                                            </p>
+                                        </a>
+                                        <div class="collapse" id="competenciasC">
+                                            <ul class="nav">
+                                                <!-- <li>
+                                                    <a [routerLink]="['/compCondPuesto']" href="#" class="nav-link">
+                                                        <span class="sidebar-mini">CP</span>
+                                                        <span class="sidebar-normal">Competencias Puesto</span>
+                                                    </a>
+                                                </li> -->
+                                                <li>
+                                                    <a [routerLink]="['/ccComportamiento']" href="#" class="nav-link">
+                                                        <span class="sidebar-mini">CT</span>
+                                                        <span class="sidebar-normal">Competencias Conductuales</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a [routerLink]="['/competenciaConductual']" href="#" class="nav-link" type="submit">
+                                                        <span class="sidebar-mini">DT</span>
+                                                        <span class="sidebar-normal">Definiciones Competencia</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </li>
+
+
+            <li>
+                <a data-toggle="collapse" href="#formsExamples">
+                    <i class="pe-7s-note2"></i>
+                    <p>Valoriacion
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="formsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a [routerLink]="['/Valorizacion']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">V</span>
+                                <span class="sidebar-normal">Valorizacion</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/grupoOcupacional']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">GR</span>
+                                <span class="sidebar-normal">Grupo Ocupacional</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/descVal']" href="#" class="nav-link" type="submit">
+                                <span class="sidebar-mini">GR</span>
+                                <span class="sidebar-normal">Parametros</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>

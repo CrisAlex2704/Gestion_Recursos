@@ -1,0 +1,895 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2">
+                <div class="card card-wizard" id="wizardCard">
+                    <div class="content">
+                        <ul class="nav nav-pills">
+                            <li><a href="#tab1" data-toggle="tab">Datos </a></li>
+                            <li><a href="#tab2" data-toggle="tab">Mision </a></li>
+                            <li><a href="#tab3" data-toggle="tab">Interfaz </a></li>
+                            <li><a href="#tab4" data-toggle="tab">Instrucc </a></li>
+                            <li><a href="#tab5" data-toggle="tab">Experien </a></li>
+                            <li><a href="#tab6" data-toggle="tab">Capacitac </a></li>
+                            <li><a href="#tab7" data-toggle="tab">A.Puesto</a></li>
+                            <li><a href="#tab8" data-toggle="tab">A.Esenc</a></li>
+                            <li><a href="#tab9" data-toggle="tab">Adicional</a></li>
+                            <li><a href="#tab10" data-toggle="tab">Comp.Con</a></li>
+                            <li><a href="#tab11" data-toggle="tab">Comp.Tec</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab1">
+                                <form #addPuesto="ngForm" id="addC" (ngSubmit)="updPuestos(addPuesto);">
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">1. DATOS DE IDENTIFICACIÓN DEL PUESTO</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Codigo</label>
+
+                                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Denominacion del puesto</label>
+                                                <input type="text" id="denominacionPuest" name="denominacionPuest" [ngModel]="denominacionPuest" class="form-control">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Unidad Administrativa</label>
+                                                <input type="text" id="unidadAdminPuest" name="unidadAdminPuest" [ngModel]="unidadAdminPuest" class="form-control">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Grupo Ocupacional</label>
+                                                <input disabled type="text" id="grupoOcupacionalPuest" name="grupoOcupacionalPuest" [ngModel]="grupoOcupacionalPuest" class="form-control">
+
+                                                <input type="hidden" id="comprobar" name="comprobar" class="form-control">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="form-group">
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group has-default">
+                                                    <label class="control-label">Rol</label>
+                                                    <div class="input-group">
+                                                        <select id="rolPuest" class="form-control " name="rolPuest" [ngModel]="rolPuest" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                          
+                  
+                              <!-- <option [value]="rol[0]._id" selectedindex selected>{{rol[0].descripcion}}</option> -->
+                              <option [value]="rolPuest" >{{rol[0].descripcion}}</option>
+                             
+                              <option *ngFor="let role of roles" [value]="role._id" >{{role.descripcion}}</option> 
+                            </select>
+                                                        <div class="input-group-addon">
+                                                            <a class="fa fa-plus" data-toggle="modal" data-target="#modaladdRol" style="cursor: pointer; color: #78b414;"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group has-default">
+                                                    <label class="control-label">Nivel</label>
+                                                    <div class="input-group">
+                                                        <select id="nivelPuest" class="form-control " name="nivelPuest" [ngModel]="nivelPuest" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+
+                              <!-- <option value="empty" selected="" disabled="">- Seleccionar -</option> -->
+                              <option value="Profesional">Profesional</option>
+                              <option value="No Profesional">No Profesional</option>
+                            </select>
+                                                        <div class="input-group-addon">
+                                                            <i class="fa " data-toggle="modal" data-target="#modaladdProv" style="cursor: pointer; color: #78b414;"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group has-default">
+                                                <label class="control-label">Grado</label>
+                                                <div class="input-group">
+                                                    <select id="gradoPuest" class="form-control " name="gradoPuest" [ngModel]="gradoPuest" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+
+                         ion>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                          </select>
+                                                    <div class="input-group-addon">
+                                                        <i class="fa " data-toggle="modal" data-target="#modaladdProv" style="cursor: pointer; color: #78b414;"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group has-default">
+                                                    <label class="control-label">Ambito</label>
+                                                    <div class="input-group">
+                                                        <select id="ambitoPuest" class="form-control " name="ambitoPuest" [ngModel]="ambitoPuest" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+
+                                                            <option [value]="ambitoPuest" >{{ambito[0].descripcion}}</option>
+                           
+
+                              <option *ngFor="let ambito1 of ambitos" [value]="ambito1._id">{{ambito1.descripcion}}
+                              </option>
+                            </select>
+                                                        <div class="input-group-addon">
+                                                            <a class="fa fa-plus" data-toggle="modal" data-target="#modaladdAmbitos" style="cursor: pointer; color: #78b414;"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="tab-pane" id="tab2">
+                                <form #addPuestoM="ngForm" id="addM" (ngSubmit)="updPuestoMision(addPuestoM);">
+
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">2. MISIÓN</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Mision del Puesto</label>
+
+                                                <textarea cols="50" rows="5" class="form-control" id="misionPuest" name="misionPuest" [ngModel]="misionPuest" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+                                </form>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab3">
+                                <form #addPuestoR="ngForm" id="addR" (ngSubmit)="updPuestoRIE(addPuestoR);">
+
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">3. RELACIONES INTERNAS Y EXTERNAS</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Interfaz</label>
+                                                <textarea cols="50" rows="5" class="form-control" id="RIEPuest" name="RIEPuest" [ngModel]="RIEPuest" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane" id="tab4">
+
+                                <form #addExperienciaPuesto="ngForm" id="addExp" (ngSubmit)="getValorExp(addExperienciaPuesto);">
+
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">4. INSTRUCCIÓN FORMAL REQUERIDA</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-1">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Nivel de Instruccion</label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group has-default">
+
+                                                                    <div class="input-group">
+
+                                                                        <select id="descExp" class="form-control " name="descExpU" [ngModel]="descExpU" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+
+                                      
+                                      <option *ngFor="let experiencia of experiencias" [value]="experiencia.descripcion">
+                                        {{experiencia.descripcion}}</option>
+
+
+                                    </select>
+
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-plus" data-toggle="modal" data-target="#modaladdProv" style="cursor: pointer; color: #78b414;"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group has-default">
+                                                                    <div class="input-group">
+                                                                        <select id="descExp1" class="form-control " name="descExp1" [ngModel]="descExp1" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">>
+
+
+                                      <option *ngFor="let experiencia of experiencias1" [value]="experiencia.descripcion">
+                                        {{experiencia.descripcion}}</option>
+
+
+                                    </select>
+
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-plus" data-toggle="modal" data-target="#modaladdProv" style="cursor: pointer; color: #78b414;"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group has-default">
+                                                                    <div class="input-group">
+                                                                        <select id="descExp2" class="form-control " name="descExp2" [ngModel]="descExp2" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+
+                       
+                                 
+                                   
+
+                                      <option *ngFor="let experiencia of experiencias2" [value]="experiencia.descripcion">
+                                        {{experiencia.descripcion}}</option>
+
+
+                                    </select>
+
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-plus" data-toggle="modal" data-target="#modaladdProv" style="cursor: pointer; color: #78b414;"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Area de Conocimiento</label>
+                                                <input class="form-control" type="text" name="areaExpU1" id="areaExpU1" [value]="areaExpU1" [ngModel]="areaExpU1" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane" id="tab5">
+                                <form #addPuestoexpU="ngForm" id="addexpU" (ngSubmit)="updExperienciasPuestos(addPuestoexpU);">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">5. EXPERIENCIA LABORAL REQUERIDA</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Nivel de Instruccion</label>
+                                                <input id="descExpU" [ngModel]="descExpU" disabled class="form-control" type="text" name="descExpU" [value]="descExpU" />
+                                                <input id="descExp1U" [ngModel]="descExp1U" disabled class="form-control" type="text" name="descExp1U" [value]="descExp1U" />
+                                                <input id="descExp2U" [ngModel]="descExp2U" disabled class="form-control" type="text" name="descExp2U" [value]="descExp2U" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Tiempo</label>
+                                                <input id="tiempoExp" [ngModel]="tiempoExp" class="form-control" type="number" name="tiempoExp" />
+                                                <input id="tiempoExp1" [ngModel]="tiempoExp1" class="form-control" type="number" name="tiempoExp1" />
+                                                <input id="tiempoExp2" [ngModel]="tiempoExp2" class="form-control" type="number" name="tiempoExp2" />
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Especificidad de la Experiencia</label>
+                                                <textarea cols="60" rows="6" class="form-control" id="especificidadExp" name="especificidadExp" [ngModel]="especificidadExp" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane" id="tab6">
+                                <form #addPuestoCap="ngForm" id="addCap" (ngSubmit)="updPuestoCapacidad(addPuestoCap);">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">6. CAPACITACION REQUERIDA PARA EL PUESTO</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Tématica de la capacitación</label>
+                                                <textarea cols="50" rows="5" class="form-control" id="capacitacionPuest" name="capacitacionPuest" [ngModel]="capacitacionPuest" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="tab7">
+
+                                <form #addActividadCargo="ngForm" id="addC" (ngSubmit)="addActividadesCargos(addActividadCargo); addActividadCargo.reset()">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">7. ACTIVIDADES DEL PUESTO</h5>
+                                    <br>
+                                    <br>
+
+
+                                    <div class="row">
+
+                                        <div style=" margin-right: 18px !important;" class="col-md-6 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Actividad del Puesto</label>
+
+                                                <input type="text" id="desActCarg" name="desActCarg" [ngModel]="desActCarg" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div style=" margin-right: 18px !important;" class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="control-label">FR</label>
+                                                <input #fr type="number" id="frActCarg" name="frActCarg" [ngModel]="frActCarg" (keyup)="calcularTotal(fr.value,1);" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div style=" margin-right: 18px !important;" class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="control-label">CO</label>
+                                                <input #co type="number" id="coActCarg" name="coActCarg" [ngModel]="coActCarg" (keyup)="calcularTotal(co.value,2);" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div style=" margin-right: 18px !important;" class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="control-label">CM</label>
+                                                <input #cm type="number" id="cmActCarg" name="cmActCarg" [ngModel]="cmActCarg" (keyup)="calcularTotal(cm.value,3);" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div style=" margin-right: 18px !important;" class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="control-label">TOTAL</label>
+                                                <input disabled type="number" id="totalActCarg" name="totalActCarg" [ngModel]="totalActCarg" class="form-control">
+
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align: right;" class="col-md-1">
+                                            <div>
+                                                <input class="btn btn-info btn-fill" style=" width: 30px !important; height: 39px !important;  margin-top: 25px;  " type="submit" value="+">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="tabla1" class="content table-responsive table-full-width">
+
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Actividades del Puesto</th>
+                                                        <th>FR</th>
+                                                        <th>CO</th>
+                                                        <th>CM</th>
+                                                        <th>TOTAL</th>
+
+
+                                                        <th class="td-actions text-right">Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let actividadCargo of actCargo; let i = index">
+
+                                                    <tr>
+                                                        <td class="{{actividadCargo.estado}}">{{actividadCargo.descripcion}}</td>
+                                                        <td class="{{actividadCargo.estado}}">{{actividadCargo.fr}}</td>
+                                                        <td class="{{actividadCargo.estado}}">{{actividadCargo.co}}</td>
+                                                        <td class="{{actividadCargo.estado}}">{{actividadCargo.cm}}</td>
+                                                        <td class="{{actividadCargo.estado}}">{{actividadCargo.total}}</td>
+
+                                                        <td class="td-actions text-right">
+
+                                                            <a type="button" rel="tooltip" title="Eliminar" (click)="eliminarActividadCargo(actividadCargo._id,i)" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="fa fa-close"></i>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" (click)="ordenar();" value="Siguiente">
+
+
+                            </div>
+
+                            <div class="tab-pane" id="tab8">
+                                <br>
+                                <br>
+                                <h5 class="text-center">8. ACTIVIDADES ESENCIALES</h5>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-md-offset-1">
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="tabla1" class="content table-responsive table-full-width">
+
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Actividades Esenciales</th>
+                                                                    <th>Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr *ngFor="let actp of prueba">
+                                                                    <td>{{actp.descripcion}}</td>
+                                                                    <td>{{actp.total}}</td>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <button type="button" style="margin-top: 70px;" class="btn btn-default btn-fill btn-wd btn-previous pull-left">Back</button>
+                                <button style="margin-top: 70px;" type="button" class="btn btn-info btn-fill btn-wd btn-next pull-right" (click)="compararActividades();" data-toggle="modal" data-target="#modalConocimiento">Siguiente</button>
+
+                            </div>
+
+
+                            <div class="tab-pane" id="tab9">
+                                <!-- (ngSubmit)="addGruposActividadesEsenciales();" -->
+                                <form id="addCap">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">9. CONOCIMIENTO ADICIONAL RELACIONADO A LAS ACTIVIDADES ESENCIALES</h5>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="tabla1" class="content table-responsive table-full-width">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Actividades Esenciales</th>
+                                                            <th>Conocimiento Adicional</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let Ae of prueba; let i = index">
+
+                                                            <td>{{Ae.descripcion}}</td>
+                                                            <td><select #valueComp (change)="selectcomp(i,valueComp.value);" select name="cities" class="form-control">
+
+                                  <option  disabled="">{{pnomProv}}</option>
+
+                                  <option *ngFor="let conocimiento of conocimientos" value="{{conocimiento._id}}">
+                                    {{conocimiento.descripcion}}</option>
+
+                                </select></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+
+                                </form>
+                            </div>
+
+
+
+
+
+
+                            <div class="tab-pane" id="tab10">
+
+                                <form #addCompetenciaTec="ngForm" id="addC" (ngSubmit)="addCompTecPuestos(addCompetenciaTec); addCompetenciaTec.reset()">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">10. COMPTENCIAS TECNICAS</h5>
+                                    <br>
+                                    <br>
+
+
+                                    <div class="row">
+
+                                        <div style=" margin-right: 18px !important;" class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Denominacion de la Competencia</label>
+
+                                                <select #CompTc id="competenciaCt" (change)="selectDenominaT(CompTc.value);" class="form-control " name="competenciaCt" [ngModel]="competenciaCt" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                          <option hidden value="empty">seleccionar</option>
+                                  <option  *ngFor="let competenciaTecnica of competenciasTecnicas"  [value]="competenciaTecnica._id">{{competenciaTecnica.denominacion}}</option>
+                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div style=" margin-right: 18px !important;" class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Nivel</label>
+                                                <select #Compveri (change)="verificarId(Compveri.value);" id="CompTecObs" name="CompTecObs" ngModel select class="form-control">
+                        <option hidden value="empty">seleccionar</option>
+                        <option  *ngFor="let ctcomportamiento of ctcomportamientos"  [value]="ctcomportamiento._id">{{ctcomportamiento.nivel}}</option>
+
+
+                      </select>
+
+
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right;" class="col-md-1">
+                                            <div>
+                                                <input class="btn btn-info btn-fill" style=" width: 30px !important; height: 39px !important;  margin-top: 25px;  " type="submit" value="+">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="tabla1" class="content table-responsive table-full-width">
+
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Denominacion de la Competencia</th>
+                                                        <th>Nivel</th>
+                                                        <th>Comportamiento Observable</th>
+
+
+                                                        <th class="td-actions text-right">Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let bcomptecPuesto of compTc; let i = index">
+
+
+                                                    <tr>
+                                                        <td class="{{bcomptecPuesto.estado}}">{{bcomptecPuesto.compTecObs.competenciaTecnica.denominacion}}</td>
+                                                        <td class="{{bcomptecPuesto.estado}}">{{bcomptecPuesto.compTecObs.nivel}}</td>
+                                                        <td class="{{bcomptecPuesto.estado}}">{{bcomptecPuesto.compTecObs.comportamiento}}</td>
+
+                                                        <td class="td-actions text-right">
+
+                                                            <a type="button" rel="tooltip" title="Eliminar" (click)="elimarCompTecPuesto(bcomptecPuesto._id,i)" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="fa fa-close"></i>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+
+                            </div>
+
+
+                            <div class="tab-pane" id="tab11">
+
+                                <form #addCompetenciaCon="ngForm" id="addCC" (ngSubmit)="addCompCondPuestos(addCompetenciaCon); addCompetenciaCon.reset()">
+
+                                    <br>
+                                    <br>
+                                    <h5 class="text-center">11. COMPTENCIAS CONDUCTULES</h5>
+                                    <br>
+                                    <br>
+
+
+                                    <div class="row">
+
+                                        <div style=" margin-right: 18px !important;" class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Denominacion de la Competencia</label>
+
+                                                <select #CompCc id="competenciaCc" (change)="selectDenominaC(CompCc.value);" class="form-control " name="competenciaCc" [ngModel]="competenciaCc" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                          <option hidden value="empty">seleccionar</option>
+                                  <option  *ngFor="let competenciaConductual of competenciasConductuales"  [value]="competenciaConductual._id">{{competenciaConductual.denominacion}}</option>
+                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div style=" margin-right: 18px !important;" class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Nivel</label>
+                                                <select id="compCondObs" name="compCondObs" ngModel select class="form-control">
+                        <option hidden value="empty">seleccionar</option>
+                        <option  *ngFor="let cccomportamiento of cccomportamientos"  [value]="cccomportamiento._id">{{cccomportamiento.nivel}}</option>
+
+
+                      </select>
+
+
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right;" class="col-md-1">
+                                            <div>
+                                                <input class="btn btn-info btn-fill" style=" width: 30px !important; height: 39px !important;  margin-top: 25px;  " type="submit" value="+">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="tabla1" class="content table-responsive table-full-width">
+
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Denominacion de la Competencia</th>
+                                                        <th>Nivel</th>
+                                                        <th>Comportamiento Observable</th>
+
+
+                                                        <th class="td-actions text-right">Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let bcompcondPuesto of compCd; let i = index">
+
+
+                                                    <tr>
+                                                        <td class="{{bcompcondPuesto.estado}}">{{bcompcondPuesto.compCondObs.competenciaConductual.denominacion}}</td>
+                                                        <td class="{{bcompcondPuesto.estado}}">{{bcompcondPuesto.compCondObs.nivel}}</td>
+                                                        <td class="{{bcompcondPuesto.estado}}">{{bcompcondPuesto.compCondObs.comportamiento}}</td>
+
+                                                        <td class="td-actions text-right">
+
+                                                            <a type="button" rel="tooltip" title="Eliminar" (click)="eliminarCompCondPuesto(bcompcondPuesto._id,i)" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="fa fa-close"></i>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+
+                                <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-finish pull-right" value="Finalizar">
+                                <!-- (click)="generarpdf();"  -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal para registros nuevos -->
+<div class="modal fade" id="modalConocimiento" *ngIf="modalupd == true" tabindex="-1" role="dialog" aria-labelledby="modalConocimiento">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+            <div style=" margin-top: 175px !important;">
+                <div class="content text-center" role="document">
+                    <form #addAmbito="ngForm" id="addC" (ngSubmit)=" agregarNuevoCono(); addAmbito.reset()">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Conocimiento</h5>
+                                <button type="button" style="margin-right: 10px;" #closebuttonadd class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="modal-body ">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div id="tabla1" class="content table-responsive table-full-width">
+
+                                            <table class="table" id="posicion" name="posicion">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Posicion</th>
+                                                        <th>Actividades Esenciales</th>
+                                                        <th>Conocimiento Adicional</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let Ae of temp; let i = index">
+                                                        <td>{{Ae}}</td>
+                                                        <td>{{prueba[Ae].descripcion}}</td>
+
+                                                        <td><select id="conocimiento" #valueComp (change)="addcompPos(Ae,valueComp.value);" select name="conocimiento" class="form-control">
+
+                               <!-- <option [value]="conocimiento"  disabled="">{{pnomProv}}</option> -->
+
+                              <option *ngFor="let conocimiento of conocimientos" value="{{conocimiento._id}}">
+                                {{conocimiento.descripcion}}</option>
+
+                            </select></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="modal-footer">
+                                <div style=" margin-top: 15px !important;">
+                                    <button type="button" style="margin-right: 15px;" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" style="margin-right: 10px;" class="btn btn-success btn-fill" id="add_Ambito" name="add_Ambito">Agregar</button>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+            </div>
+        </div>
+    </div>

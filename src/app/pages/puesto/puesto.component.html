@@ -1,0 +1,332 @@
+<br>
+<div class="col-md-3">
+    <div class="card" style="background-color: #F59A3E; cursor: pointer;" routerLink="/puesto">
+        <div class="header">
+            <h5 class="title" style="font-weight: bold; color: white;"><i class="pe-7s-box2"></i>&nbsp; Total de Puestos</h5>
+        </div>
+        <div class="content" style="text-align: right;">
+            <a style="color: white; font-weight: bold; font-size: 22px;">{{ contPuest }}</a>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="card">
+        <div class="container-fluid">
+            <form #buscar="ngForm" class="form-horizontal" (keyup)="searchPuesto(buscar)">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8 col-md-8">
+                            <h4 class="card-title col-md-5"> Puestos</h4>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <!-- <div class="input-group no-border" style="margin-top: 15px;"> -->
+                            <input type="text" class="form-control" style="margin-top: 25px;" value="{{ buscarPuest }}" [ngModel]="buscarPuest" id="buscarPuest" name="buscarPuest" placeholder="Buscar...">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content table-responsive table-full-width">
+                        <p *ngIf="coincidencia == false">No se encontró ninguna coincidencia</p>
+                        <table class="table" *ngIf="coincidencia == true">
+                            <thead>
+                                <tr>
+                                    <th>codigo</th>
+                                    <th>denominacion</th>
+                                    <th>nivel</th>
+                                    <th>unidadAdmin</th>
+                                    <th>rol</th>
+                                    <th>grupoOcupacional</th>
+                                    <th>ambito</th>
+                                    <th class="text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let puesto of puestos">
+                                <tr>
+                                    <td class="{{puesto.estado}}">{{puesto.codigo}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.denominacion}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.nivel}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.unidadAdmin}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.rol.descripcion}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.grupoOcupacional}}</td>
+                                    <td class="{{puesto.estado}}">{{puesto.ambito.descripcion}}</td>
+
+                                    <td class="td-actions text-right">
+
+                                        <a type="button" rel="tooltip" title="Editar" (click)="modificarP(puesto._id);" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
+                                        <a type="button" rel="tooltip" title="Editar" (click)="generarpdf(puesto);" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-print"></i>
+                                        </a>
+
+                                        <a type="button" rel="tooltip" title="Calificar" (click)="CalificarP(puesto._id);" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-check-circle"></i>
+                                        </a>
+
+                                        <a type="button" *ngIf="puesto.estado === 'true'" rel="tooltip" title="Eliminar" (click)="eliminarPuesto(puesto)" class="btn btn-danger btn-simple btn-xs">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+
+                                        <a type="button" *ngIf="puesto.estado === 'false'" rel="tooltip" title="Habilitar" (click)="habilitarPuesto(puesto)" class="btn btn-success btn-simple btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<caption>
+    <a class="btn btn-success btn-fill" (click)="Carga()" data-toggle="modal" style="position: fixed; bottom: 15px; right: 20px; border-radius: 100% !important; float: right; height: 45px; width: 45px;">
+        <!-- <a [routerLink]="['/addpuesto']" href="#" class="nav-link"> -->
+        <i style="color: white; padding-top: 6px; padding-right: 8px;" class="fa fa-plus"></i>
+
+    </a>
+</caption>
+
+
+<div class="modal fade" id="modaladdPuestos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <form #addPuesto="ngForm" id="addC" (ngSubmit)="addPuestos(addPuesto); addPuesto.reset()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Puestos</h5>
+                    <button type="button" #closebuttonadd class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
+                        <label class="col-md-2 col-form-label" style="margin-top: 10px;">codigo:</label>
+                        <div class="col-md-2">
+                            <div class="form-group has-default">
+                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control">
+                            </div>
+                        </div>
+                        <label class="col-md-2 col-form-label" style="margin-top: 10px;">Denominacion:</label>
+                        <div class="col-md-4">
+                            <div class="form-group has-default">
+                                <input type="text" id="denominacionPuest" name="denominacionPuest" [ngModel]="denominacionPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Mision:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <textarea class="form-control" id="misionPuest" name="misionPuest" [ngModel]="misionPuest" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Nivel:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="nivelPuest" name="nivelPuest" [ngModel]="nivelPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Unidad Administrativa:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="unidadAdminPuest" name="unidadAdminPuest" [ngModel]="unidadAdminPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">R. I. E:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="RIEPuest" name="RIEPuest" [ngModel]="RIEPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Capacitacion:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="capacitacionPuest" name="capacitacionPuest" [ngModel]="capacitacionPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">ROL:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="rolPuest" name="rolPuest" [ngModel]="rolPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Grupo Ocupacionale:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="grupoOcupacionalPuest" name="grupoOcupacionalPuest" [ngModel]="grupoOcupacionalPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Grado</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="gradoPuest" name="gradoPuest" [ngModel]="gradoPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Ambito:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="ambitoPuest" name="ambitoPuest" [ngModel]="ambitoPuest" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" id="add_Puesto" name="add_Puesto">Agregar</button>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" *ngIf="dataUpdPuest == true" id="modalupdPuesto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <form #updPuesto="ngForm" id="updC" (ngSubmit)="updPuestos(updPuesto)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Puestos</h5>
+                    <button type="button" #closebuttonupd class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
+                        <label class="col-md-2 col-form-label" style="margin-top: 10px;">Codigo:</label>
+                        <div class="col-md-2">
+                            <div class="form-group has-default">
+                                <input type="text" id="codigoPuestU" name="codigoPuestU" [ngModel]="codigoPuestU" class="form-control">
+                            </div>
+                        </div>
+                        <label class="col-md-2 col-form-label" style="margin-top: 10px;">Denominacion:</label>
+                        <div class="col-md-4">
+                            <div class="form-group has-default">
+                                <input type="text" id="denominacionPuestU" name="denominacionPuestU" [ngModel]="denominacionPuestU" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Mision:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <textarea class="form-control" id="misionPuestU" name="misionPuestU" [ngModel]="misionPuestU" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Nivel:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="nivelPuestU" name="nivelPuestU" [ngModel]="nivelPuestU" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Unidad Administrativa:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="unidadAdminPuestU" name="unidadAdminPuestU" [ngModel]="unidadAdminPuestU" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">R. I. E:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="RIEPuestU" name="RIEPuestU" [ngModel]="RIEPuestU" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Capacitacion:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="capacitacionPuestU" name="capacitacionPuestU" [ngModel]="capacitacionPuestU" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Rol:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="rolPuestU" name="rolPuestU" [ngModel]="rolPuestU" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Grupo Ocupacional:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="grupoOcupacionalPuestU" name="grupoOcupacionalPuestU" [ngModel]="grupoOcupacionalPuestU" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-4 col-form-label" style="margin-top: 10px;">Ambito:</label>
+                        <div class="col-md-8">
+                            <div class="form-group has-default">
+                                <input type="text" id="ambitoPuestU" name="ambitoPuestU" [ngModel]="ambitoPuestU" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" id="updPuestos" name="updPuestos">Modificar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

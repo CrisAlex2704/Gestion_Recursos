@@ -33,14 +33,14 @@
                                             <div class="form-group">
                                                 <label class="control-label">Codigo</label>
 
-                                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control" required="true">
+                                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control">
 
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Denominacion del puesto</label>
-                                                <input #puesto (blur)="ComprobarPuesto(puesto.value);" type="text" id="denominacionPuest" name="denominacionPuest" ngModel class="form-control" required="true">
+                                                <input #puesto (blur)="ComprobarPuesto(puesto.value);" type="text" id="denominacionPuest" name="denominacionPuest" ngModel class="form-control">
 
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                                 <div class="form-group has-default">
                                                     <label class="control-label">Rol</label>
                                                     <div class="input-group">
-                                                        <select id="rolPuest" class="form-control " name="rolPuest" [ngModel]="idRol" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                        <select id="rolPuest" class="form-control " name="rolPuest" [ngModel]="idRol" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                           
                   
                               <!-- <option [value]="pidProv" selectedindex>{{pnomProv}}</option> -->
@@ -100,7 +100,7 @@
                                                 <div class="form-group has-default">
                                                     <label class="control-label">Nivel</label>
                                                     <div class="input-group">
-                                                        <select id="nivelPuest" class="form-control " name="nivelPuest" ngModel data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                        <select id="nivelPuest" class="form-control " name="nivelPuest" ngModel data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                               <option [value]="nivelPuest" disabled="">{{pnomProv}}</option>
                               <!-- <option value="empty" selected="" disabled="">- Seleccionar -</option> -->
@@ -126,7 +126,7 @@
                                             <div class="form-group has-default">
                                                 <label class="control-label">Grado</label>
                                                 <div class="input-group">
-                                                    <select id="gradoPuest" class="form-control " name="gradoPuest" ngModel data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                    <select id="gradoPuest" class="form-control " name="gradoPuest" ngModel data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                             <option [value]="gradoPuest" disabled="">{{pnomProv}}</option>
                             <option value="1">1</option>
@@ -167,7 +167,7 @@
                                                 <div class="form-group has-default">
                                                     <label class="control-label">Ambito</label>
                                                     <div class="input-group">
-                                                        <select id="ambitoPuest" class="form-control " name="ambitoPuest" [ngModel]="idAmb" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                        <select id="ambitoPuest" class="form-control " name="ambitoPuest" [ngModel]="idAmb" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                               <option [value]="idAmb" disabled="">{{pnomProv}}</option>
                               <option *ngFor="let ambito of ambitos" [value]="ambito._id">{{ambito.descripcion}}
@@ -262,7 +262,7 @@
 
                                                                     <div class="input-group">
 
-                                                                        <select id="descExp" class="form-control " name="descExp" [ngModel]="descExp" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" aria-required="true">
+                                                                        <select id="descExp" class="form-control " name="descExp" [ngModel]="descExp" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" aria->
 
                                       
                             
@@ -282,7 +282,7 @@
 
                                                                 <div class="form-group has-default">
                                                                     <div class="input-group">
-                                                                        <select id="descExp1" class="form-control " name="descExp1" [ngModel]="descExp1" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                                        <select id="descExp1" class="form-control " name="descExp1" [ngModel]="descExp1" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                                       <option [value]="descExp1" disabled="">{{pnomProv}}</option>
 
@@ -300,7 +300,7 @@
 
                                                                 <div class="form-group has-default">
                                                                     <div class="input-group">
-                                                                        <select id="descExp2" class="form-control " name="descExp2" [ngModel]="descExp2" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue" required="true">
+                                                                        <select id="descExp2" class="form-control " name="descExp2" [ngModel]="descExp2" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                                       <!-- data-menu-style="dropdown-blue" onchange="selecOp(event.target.value)"> -->
                                  
@@ -425,28 +425,28 @@
                                             <div class="form-group">
                                                 <label class="control-label">Actividad del Puesto</label>
 
-                                                <input type="text" id="desActCarg" name="desActCarg" [ngModel]="desActCarg" class="form-control" required="true">
+                                                <input type="text" id="desActCarg" name="desActCarg" [ngModel]="desActCarg" class="form-control">
 
                                             </div>
                                         </div>
                                         <div style=" margin-right: 18px !important;" class="col-md-1">
                                             <div class="form-group">
                                                 <label class="control-label">FR</label>
-                                                <input #fr type="number" id="frActCarg" name="frActCarg" [ngModel]="frActCarg" (keyup)="calcularTotal(fr.value,1);" class="form-control" required="true">
+                                                <input #fr type="number" id="frActCarg" name="frActCarg" [ngModel]="frActCarg" (keyup)="calcularTotal(fr.value,1);" class="form-control">
 
                                             </div>
                                         </div>
                                         <div style=" margin-right: 18px !important;" class="col-md-1">
                                             <div class="form-group">
                                                 <label class="control-label">CO</label>
-                                                <input #co type="number" id="coActCarg" name="coActCarg" [ngModel]="coActCarg" (keyup)="calcularTotal(co.value,2);" class="form-control" required="true">
+                                                <input #co type="number" id="coActCarg" name="coActCarg" [ngModel]="coActCarg" (keyup)="calcularTotal(co.value,2);" class="form-control">
 
                                             </div>
                                         </div>
                                         <div style=" margin-right: 18px !important;" class="col-md-1">
                                             <div class="form-group">
                                                 <label class="control-label">CM</label>
-                                                <input #cm type="number" id="cmActCarg" name="cmActCarg" [ngModel]="cmActCarg" (keyup)="calcularTotal(cm.value,3);" class="form-control" required="true">
+                                                <input #cm type="number" id="cmActCarg" name="cmActCarg" [ngModel]="cmActCarg" (keyup)="calcularTotal(cm.value,3);" class="form-control">
 
                                             </div>
                                         </div>

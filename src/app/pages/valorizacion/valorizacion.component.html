@@ -601,7 +601,7 @@
                                         </div>
                                     </div>
                                     <input (click)="cambioIndex(3)" style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
-                                    <input (click)="calcularTotal(2)" style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-finish pull-right" value="Finalizar">
+                                    <input [routerLink]="['/valorizacionLista']" (click)="calcularTotal(2)" style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-finish pull-right" value="Finalizar">
 
                                 </div>
                             </div>

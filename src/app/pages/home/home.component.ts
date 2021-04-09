@@ -6,6 +6,7 @@ import { RolService } from '../../services/rol.service';
 import { GrupoOcupacionalService } from '../../services/grupo-ocupacional.service';
 import { AmbitoService } from '../../services/ambito.service';
 import { PuestoService } from '../../services/puesto.service';
+import { ValorizacionService } from 'src/app/services/valorizacion.service';
 
 @Component({
   selector: 'app-home',
@@ -23,12 +24,15 @@ export class HomeComponent implements OnInit {
   contAct : string= "";
   contPuest : string= "";
   contActPuest: string = "";
+  contVal: String = "";
+
   constructor(
     public router:Router,
     public _rolService:RolService,
     public _grupoOcupacionalService:GrupoOcupacionalService,
     public _ambitoService: AmbitoService,
     public _puestoService: PuestoService,
+    public _valorizacion: ValorizacionService
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +54,7 @@ export class HomeComponent implements OnInit {
     this.ContarGrupo();
     this.ContarAmbito();
     this.ContarPuestos();
+    this.ContarValoriacion();
   }
 
 ContarRol(){
@@ -77,5 +82,10 @@ ContarPuestos(){
   })
 }
 
+ContarValoriacion() {
+  this._valorizacion.countVal().subscribe(resp => {
+    this.contVal = resp.total;
+  })
+}
 
 }

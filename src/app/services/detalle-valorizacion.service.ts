@@ -12,14 +12,14 @@ export class DetalleValorizacionService {
     private http: HttpClient
   ) { }
 
-  getDetalleValorizacion(){
+  getDetalleValorizacion(idval: string){
     const token = localStorage.getItem('tokenFact');
     const headers = new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
         token
     });
 
-    const url = URL_SERVICE.url + '/detallevalorizacion/'+this.idEmp;
+    const url = URL_SERVICE.url + '/detallevalorizacion/'+this.idEmp +"/"+ idval ;
 
 
     return this.http.get( url, {headers} )
@@ -32,7 +32,7 @@ agregarDetalleValorizacion(descval: string, valorizacion: string ) {
   
     const val = {
       empresa: this.idEmp,
-  descval: descval,
+  descVal: descval,
   valorizacion: valorizacion
   
 

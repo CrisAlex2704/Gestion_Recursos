@@ -27,11 +27,12 @@ import { CompTecPuestoComponent } from './comp-tec-puesto/comp-tec-puesto.compon
 import { CompCondPuestoComponent } from './comp-cond-puesto/comp-cond-puesto.component';
 import { PuestoUpdComponent } from './puesto-upd/puesto-upd.component';
 import { DescValComponent } from './desc-val/desc-val.component';
+import { ValorizacionListaComponent } from './valorizacion-lista/valorizacion-lista.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, PagesComponent, RolComponent, GrupoOcupacionalComponent, AmbitoComponent, PuestoComponent, ValorizacionComponent, ConocimientoAdicionalComponent, ActividadEsencialComponent, ActividadCargoComponent, PuestoAddComponent, ExperienciaComponent, ExperienciaPuestoComponent, CompetenciaTecnicaComponent, CompetenciaConductualComponent, CTcomportamientoObsComponent, CccomportamientoObsComponent, CompTecPuestoComponent, CompCondPuestoComponent, PuestoUpdComponent, DescValComponent],
+  declarations: [HomeComponent, PagesComponent, RolComponent, GrupoOcupacionalComponent, AmbitoComponent, PuestoComponent, ValorizacionComponent, ConocimientoAdicionalComponent, ActividadEsencialComponent, ActividadCargoComponent, PuestoAddComponent, ExperienciaComponent, ExperienciaPuestoComponent, CompetenciaTecnicaComponent, CompetenciaConductualComponent, CTcomportamientoObsComponent, CccomportamientoObsComponent, CompTecPuestoComponent, CompCondPuestoComponent, PuestoUpdComponent, DescValComponent, ValorizacionListaComponent],
   exports: [
     PagesComponent
 ],

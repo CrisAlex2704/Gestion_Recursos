@@ -20,6 +20,7 @@ import { CompCondPuestoComponent } from './comp-cond-puesto/comp-cond-puesto.com
 import { PuestoUpdComponent } from './puesto-upd/puesto-upd.component';
 import { ValorizacionComponent } from './valorizacion/valorizacion.component';
 import { DescValComponent } from './desc-val/desc-val.component';
+import { ValorizacionListaComponent } from './valorizacion-lista/valorizacion-lista.component';
 
 
 
@@ -48,6 +49,8 @@ const pagesRoutes: Routes = [
         { path: 'updPuesto/:idpuesto', component: PuestoUpdComponent},
         { path: 'descVal', component: DescValComponent},
         { path: 'Valorizacion/:idpuesto', component: ValorizacionComponent},
+        { path: 'valorizacionLista', component: ValorizacionListaComponent},
+
 
         { path: '', redirectTo: '/login', pathMatch: 'full' }
         ]

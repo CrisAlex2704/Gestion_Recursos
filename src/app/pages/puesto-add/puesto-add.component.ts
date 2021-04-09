@@ -469,9 +469,9 @@ export class PuestoAddComponent implements OnInit {
   getValorExp(form: NgForm) {
 
     console.log(form.value);
-    this.descExpU = this.descExp;
-    this.descExp1U = this.descExp1;
-    this.descExp2U = this.descExp2;
+    this.descExpU = form.value.descExp;
+    this.descExp1U = form.value.descExp1;
+    this.descExp2U = form.value.descExp2;
     this.areaExpU1 = form.value.areaExpU1;
     console.log("experiencia 1 es" + this.descExp);
     console.log("experiencia 2 es" + this.descExp1);

@@ -164,14 +164,14 @@ export class ValorizacionComponent implements OnInit {
       this.idModificar,
       this.totalPuesto).subscribe(resp => {
 
-      this.adddetalleValorizacion("123456",resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id22,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id23,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id24,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id31,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id32,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id41,resp.valorizacion._id);
-      // this.adddetalleValorizacion(this.id42,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id21,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id22,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id23,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id24,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id31,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id32,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id41,resp.valorizacion._id);
+      this.adddetalleValorizacion(this.id42,resp.valorizacion._id); 
         console.log(resp);
         console.log(this.id21);
         this.getValorizacion();
@@ -185,6 +185,7 @@ export class ValorizacionComponent implements OnInit {
       console.log(resp);
     })
   }
+  
   getDataActividadPuesto(valorizacion: Valorizacion) {
     this.getDataVal = valorizacion;
     this.puestoU = valorizacion.puesto;
@@ -281,21 +282,21 @@ console.log(opcion + " "+ ind);
     console.log("entro 2");  
     
     if(this.index === 1 ){
-      this.tituloVal = "2.1. INSTRUCCIÓN FORMACIÓN";
+      this.tituloVal = "  2.1. INSTRUCCIÓN FORMACIÓN";
     }else if(this.index === 2 ){
-      this.tituloVal = "2.2.  EXPERIENCIA";
+      this.tituloVal = "  2.2.  EXPERIENCIA";
     }else if(this.index === 3 ){
-      this.tituloVal = "2.3. HABILIDAD DE GESTIÓN";
+      this.tituloVal = "  2.3. HABILIDAD DE GESTIÓN ";
     }else if(this.index === 4 ){
-      this.tituloVal = "2.4. HABILIDAD DE COMUNICACIÓN";
+      this.tituloVal = "  2.4.  HABILIDAD DE COMUNICACIÓN";
     }else if(this.index === 5 ){
-      this.tituloVal = "3.1. CONDICIONES DE TRABAJO";
+      this.tituloVal = " 3.1. CONDICIONES DE TRABAJO";
     }else if(this.index === 6 ){
-      this.tituloVal = "3.2. TOMA DE DECISIONES";
+      this.tituloVal = "  3.2.  TOMA DE DECISIONES";
     }else if(this.index === 7 ){
-      this.tituloVal = "4.1. ROL DEL PUESTO";
+      this.tituloVal = "  4.1. ROL DEL PUESTO";
     }else if(this.index === 8 ){
-      this.tituloVal = "4.2. CONTROL DE RESULTADOS";
+      this.tituloVal = "  4.2. CONTROL DE RESULTADOS";
     }
     console.log(this.tituloVal);
     this.getTitulo(this.tituloVal);
@@ -386,10 +387,8 @@ getGrupoOcupacional(total){
     for (let i = 0; i < this.gruposOcupacionales.length; i++) {
       if (total >= this.gruposOcupacionales[i].minVal && total<= this.gruposOcupacionales[i].maxVal) {
       this.grupo = this.gruposOcupacionales[i];
-      console.log(this.grupo);  
-
-      }
-      
+      console.log(this.grupo); 
+      }    
     }
   })
 }

@@ -238,7 +238,7 @@
 
                             <div class="tab-pane" id="tab4">
 
-                                <form #addExperienciaPuesto="ngForm" id="addExp" (ngSubmit)="getValorExp(addExperienciaPuesto);">
+                                <form #addExperienciaPuesto="ngForm" id="addExp" (ngSubmit)="getValorExp(addExperienciaPuesto); ">
 
 
                                     <br>
@@ -336,7 +336,7 @@
 
                                     <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
 
-                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente" *ngIf="addExperienciaPuesto.valid">
 
                                 </form>
                             </div>

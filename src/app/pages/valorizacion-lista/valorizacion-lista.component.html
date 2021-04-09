@@ -1,0 +1,123 @@
+<br>
+<div class="col-md-3">
+    <div class="card" style="background-color: #F59A3E; cursor: pointer;" routerLink="/valorizacionLista">
+        <div class="header">
+            <h5 class="title" style="font-weight: bold; color: white;"><i class="pe-7s-box2"></i>&nbsp; Total de valorizaciones </h5>
+        </div>
+        <div class="content" style="text-align: right;">
+            <a style="color: white; font-weight: bold; font-size: 22px;"> {{contVal}}</a>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="main-content">
+    <div class="card">
+        <div class="container-fluid">
+            <form #buscar="ngForm" class="form-horizontal" (keyup)="searchVal(buscar)">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8 col-md-8">
+                            <h4 class="card-title col-md-5"> Valorizacion</h4>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <input type="text" class="form-control" style="margin-top: 25px;" value="{{ buscarVal }}" [ngModel]="buscarVal" id="buscarVal" name="buscarVal" placeholder="Buscar...">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content table-responsive table-full-width">
+                        <p *ngIf="coincidencia == false">No se encontró ninguna coincidencia</p>
+                        <table class="table" *ngIf="coincidencia == true">
+                            <thead>
+                                <tr>
+                                    <th>Puesto</th>
+                                    <th>Valorizacion</th>
+                                    <th>Grupo Ocupacional</th>
+                                    <th class="text-right">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let valorizacion of valorizaciones; let i = index">
+                                <tr>
+                                    <td class="{{valorizacion.estado}}">{{valorizacion.puesto.denominacion}}</td>
+                                    <td class="{{valorizacion.estado}}">{{valorizacion.total}}</td>
+                                    <td class="{{valorizacion.estado}}">{{totales[i]}}</td>
+
+                                    <td class="td-actions text-right">
+
+                                        <a type="button" rel="tooltip" title="Ver" (click)="getdetalleValorizacion(valorizacion._id)" data-toggle="modal" data-target="#modalverVal" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <caption>
+    <a class="btn btn-success btn-fill" data-toggle="modal" data-target="#modaladdAmbitos" style="position: fixed; bottom: 15px; right: 20px; border-radius: 100% !important; float: right; height: 45px; width: 45px;">
+        <i style="color: white; padding-top: 6px; padding-right: 8px;" class="fa fa-plus"></i>
+    </a>
+</caption> -->
+
+<div class="modal fade" id="modalverVal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <form #addAmbito="ngForm" id="addC">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Valorizaciones</h5>
+                    <button type="button" #closebuttonadd class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body ">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Opcion</th>
+                                <th>Descripción</th>
+                                <th>Calificacion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let detalleValorizacion of detallevalorizaciones; let i = index">
+                            <tr>
+                                <td class="{{detalleValorizacion.estado}}">{{detalleValorizacion.descVal.titulo}}</td>
+                                <td class="{{detalleValorizacion.estado}}">{{detalleValorizacion.descVal.descripcion}}</td>
+                                <td class="{{detalleValorizacion.estado}}">{{detalleValorizacion.descVal.calificacion}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

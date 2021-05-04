@@ -1,0 +1,712 @@
+<!DOCTYPE html >
+<html class=" scrollbar force-overflow" data-color="orange">
+
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="assets/dist/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Sistemas Gestion de Recursos</title>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Dashboard core CSS    -->
+    <link href="assets/dist/css/light-bootstrap-dashboard.css?v=1.4.1" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/dist/css/demo.css" rel="stylesheet"/>
+
+
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
+    <link href="assets/dist/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="styles.09e2c710755c8867a460.css"></head>
+
+
+<body>
+
+
+    <app-root></app-root>
+
+
+
+    <script src="assets/dist/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/dist/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="assets/dist/js/jquery.validate.min.js"></script>
+    <script src="assets/dist/js/moment.min.js"></script>
+    <script src="assets/dist/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="assets/dist/js/bootstrap-selectpicker.js"></script>
+    <script src="assets/dist/js/bootstrap-switch-tags.min.js"></script>
+    <script src="assets/dist/js/chartist.min.js"></script>
+    <script src="assets/dist/js/bootstrap-notify.js"></script>
+    <script src="assets/dist/js/sweetalert2.js"></script>
+    <script src="assets/dist/js/jquery-jvectormap.js"></script>
+    <script src="assets/dist/js/jquery.bootstrap.wizard.min.js"></script>
+    <script src="assets/dist/js/bootstrap-table.js"></script>
+    <script src="assets/dist/js/jquery.datatables.js"></script>
+    <script src="assets/dist/js/fullcalendar.min.js"></script>
+    <script src="assets/dist/js/light-bootstrap-dashboard.js?v=1.4.1"></script>
+    <script src="assets/dist/js/demo.js"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <!-- <script type="text/javascript">
+        $(document).ready(function() {
+    
+            demo.initDashboardPageCharts();
+            demo.initVectorMap();
+    
+            $.notify({
+                icon: 'pe-7s-bell',
+                message: "<b>Light Bootstrap Dashboard PRO</b> - forget about boring dashboards."
+    
+            }, {
+                type: 'warning',
+                timer: 4000
+            });
+    
+        });
+    </script> -->
+
+    <script type="text/javascript">
+        $().ready(function() {
+            lbd.checkFullPageBackgroundImage();
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.card').removeClass('card-hidden');
+            }, 700)
+        });
+    </script>
+
+    <script type="text/javascript">
+        $().ready(function() {
+
+            // Init DatetimePicker
+            demo.initFormExtendedDatetimepickers();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $().ready(function() {
+
+            var $validator = $('.card-wizard form').validate({
+                rules: {
+                    firstname: {
+                        required: true,
+                        minlength: 3
+                    },
+                    lastname: {
+                        required: true,
+                        minlength: 3
+                    },
+                    email: {
+                        required: true,
+                        minlength: 3,
+                    }
+                },
+
+                highlight: function(element) {
+                    $(element).parent().addClass('has-error').removeClass('has-success');
+                },
+                success: function(element) {
+                    $(element).parent().addClass('has-success').removeClass('has-error');
+                }
+            });
+            // Code for the Validator
+            // var $validator6 = $('#addExp').validate({
+            //     rules: {
+            //         descExp: {
+            //             required: true
+            //         },
+            //         descExp1: {
+            //             required: true
+            //         },
+            //         descExp2: {
+            //             required: true
+            //         },
+            //         radio11: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator1 = $('#addC').validate({
+            //     rules: {
+            //         codigoPuest: {
+            //             required: true
+            //         },
+            //         denominacionPuest: {
+            //             required: true
+            //         },
+            //         radio10: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator2 = $('#addCarg').validate({
+            //     rules: {
+            //         desActCarg: {
+            //             required: true
+            //         },
+            //         radio12: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator3 = $('#addActEsen').validate({
+            //     rules: {
+            //         conocimiento: {
+            //             required: true
+            //         },
+            //         radio13: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator4 = $('#addCompTec').validate({
+            //     rules: {
+            //         competenciaCt: {
+            //             required: true
+            //         },
+            //         CompTecObs: {
+            //             required: true
+            //         },
+            //         radio15: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator5 = $('#addCCondPues').validate({
+            //     rules: {
+            //         competenciaCc: {
+            //             required: true
+            //         },
+            //         compCondObs: {
+            //             required: true
+            //         },
+            //         radio16: {
+            //             required: true
+            //         },
+            //         radio17: {
+            //             required: true
+            //         },
+            //         radio18: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+
+
+            // Wizard Initialization
+            $('.card-wizard').bootstrapWizard({
+                'tabClass': 'nav nav-pills',
+                'nextSelector': '.btn-next',
+                'previousSelector': '.btn-previous',
+
+                onNext: function(tab, navigation, index) {
+
+                    var $valid = $('.card-wizard form').valid();
+                    if (!$valid) {
+                        $validator.focusInvalid();
+                        return false;
+                    }
+
+                    // var $valid6 = $('#addExp ').valid();
+                    // if (!$valid6) {
+                    //     $validator6.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid1 = $('#addC').valid();
+                    // if (!$valid1) {
+                    //     $validator1.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid2 = $('#addCarg').valid();
+                    // if (!$valid2) {
+                    //     $validator2.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid3 = $('#addActEsen').valid();
+                    // if (!$valid3) {
+                    //     $validator3.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid4 = $('#addCompTec').valid();
+                    // if (!$valid4) {
+                    //     $validator4.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid5 = $('#addCCondPues').valid();
+                    // if (!$valid5) {
+                    //     $validator5.focusInvalid();
+                    //     return false;
+                    // }
+                },
+
+                onInit: function(tab, navigation, index) {
+                    //check number of tabs and fill the entire row
+                    var $total = navigation.find('li').length;
+                    var $wizard = navigation.closest('.card-wizard');
+
+
+
+                    refreshAnimation($wizard, index);
+
+                    $('.moving-tab').css('transition', 'transform 0s');
+                },
+
+                onTabClick: function(tab, navigation, index) {
+                    var $valid = $('.card-wizard form').valid();
+
+                    if (!$valid) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                },
+
+                onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index + 1;
+
+                    var $wizard = navigation.closest('.card-wizard');
+
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if ($current >= $total) {
+                        $($wizard).find('.btn-next').hide();
+                        $($wizard).find('.btn-finish').show();
+                    } else {
+                        $($wizard).find('.btn-next').show();
+                        $($wizard).find('.btn-finish').hide();
+                    }
+
+                    var checkbox = $('.footer-checkbox');
+
+                    if (!index == 0) {
+                        $(checkbox).css({
+                            'opacity': '0',
+                            'visibility': 'hidden',
+                            'position': 'absolute'
+                        });
+                    } else {
+                        $(checkbox).css({
+                            'opacity': '1',
+                            'visibility': 'visible'
+                        });
+                    }
+
+                    refreshAnimation($wizard, index);
+                }
+            });
+
+
+            // Prepare the preview for profile picture
+            $("#wizard-picture").change(function() {
+                readURL(this);
+            });
+
+            $('[data-toggle="wizard-radio"]').click(function() {
+                wizard = $(this).closest('.card-wizard');
+                wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
+                $(this).addClass('active');
+                $(wizard).find('[type="radio"]').removeAttr('checked');
+                $(this).find('[type="radio"]').attr('checked', 'true');
+            });
+
+            $('[data-toggle="wizard-checkbox"]').click(function() {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $(this).find('[type="checkbox"]').removeAttr('checked');
+                } else {
+                    $(this).addClass('active');
+                    $(this).find('[type="checkbox"]').attr('checked', 'true');
+                }
+            });
+
+            $('.set-full-height').css('height', 'auto');
+
+            //Function to show image before upload
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(window).resize(function() {
+                $('.card-wizard').each(function() {
+                    $wizard = $(this);
+
+                    index = $wizard.bootstrapWizard('currentIndex');
+                    refreshAnimation($wizard, index);
+
+                    $('.moving-tab').css({
+                        'transition': 'transform 0s'
+                    });
+                });
+            });
+
+            function refreshAnimation($wizard, index) {
+                $total = $wizard.find('.nav li').length;
+                $li_width = 100 / $total;
+
+                total_steps = $wizard.find('.nav li').length;
+                move_distance = $wizard.width() / total_steps;
+                index_temp = index;
+                vertical_level = 0;
+
+                mobile_device = $(document).width() < 600 && $total > 3;
+
+                if (mobile_device) {
+                    move_distance = $wizard.width() / 2;
+                    index_temp = index % 2;
+                    $li_width = 50;
+                }
+
+                $wizard.find('.nav li').css('width', $li_width + '%');
+
+                step_width = move_distance;
+                move_distance = move_distance * index_temp;
+
+                $current = index + 1;
+
+                if ($current == 1 || (mobile_device == true && (index % 2 == 0))) {
+                    move_distance -= 8;
+                } else if ($current == total_steps || (mobile_device == true && (index % 2 == 1))) {
+                    move_distance += 8;
+                }
+
+                if (mobile_device) {
+                    vertical_level = parseInt(index / 2);
+                    vertical_level = vertical_level * 38;
+                }
+
+                $wizard.find('.moving-tab').css('width', step_width);
+                $('.moving-tab').css({
+                    'transform': 'translate3d(' + move_distance + 'px, ' + vertical_level + 'px, 0)',
+                    'transition': 'all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)'
+
+                });
+            }
+
+        });
+
+        function onFinishWizard() {
+            //here you can do something, sent the form to server via ajax and show a success message with swal
+
+            swal("Good job!", "You clicked the finish button!", "success");
+        }
+    </script>
+    <script>
+        function soloNumeros(e) {
+            var key = window.Event ? e.which : e.keyCode;
+            if ((key >= 48 && key <= 57) || (key == 13)) {
+                return true;
+            } else {
+                swal("Error", "Ingresar solo números", "error");
+                e.preventDefault();
+            }
+        }
+
+        function soloDecimales(e) {
+            var key = window.Event ? e.which : e.keyCode;
+            if ((key >= 48 && key <= 57) || (key == 13) || (key == 46)) {
+                return true;
+            } else {
+                swal("Error", "Ingresar solo números ó punto", "error");
+                e.preventDefault();
+            }
+        }
+
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                swal("Error", "Ingresar solo letras", "error");
+                e.preventDefault();
+            }
+        }
+    </script>
+
+    <script>
+        var valorEnvio = ""
+        var valorEnvio1 = ""
+        var valorEnvio2 = ""
+
+        function selecOp(valor) {
+
+            document.getElementById("valorDeSelect").value = valor //declararle el valor del select al input
+        }
+
+        function selecOp1(valor1) {
+
+            document.getElementById("valorDeSelect1").value = valor1 //declararle el valor del select al input
+        }
+
+        function selecOp2(valor2) {
+
+            document.getElementById("valorDeSelect2").value = valor2 //declararle el valor del select al input
+        }
+
+        function obtenerValor() {
+            valor = document.getElementById("valorDeSelect").value //obtener valor del input
+            valorEnvio = valor //declarar valor a la variable a usar en el ajax
+            console.log(valorEnvio)
+            valor1 = document.getElementById("valorDeSelect1").value //obtener valor del input
+            valorEnvio1 = valor1 //declarar valor a la variable a usar en el ajax
+            console.log(valorEnvio1)
+            valor2 = document.getElementById("valorDeSelect2").value //obtener valor del input
+            valorEnvio2 = valor2 //declarar valor a la variable a usar en el ajax
+            console.log(valorEnvio2)
+
+
+        }
+    </script>
+    <script language="JavaScript">
+        //Creacion de Variable incremental
+        var incremento = 0;
+
+        //Lo que se hará cuando se presione el boton de Agregar
+        function agregar(obj) {
+
+            incremento++;
+
+
+            //Obteniendo el Div "plazos"
+            bloque = document.getElementById('plazos');
+            bloque1 = document.getElementById('plazos1');
+            bloque2 = document.getElementById('plazos2');
+
+
+
+            //Creando el input que irá dentro del Div "plazos"
+            elemento = document.createElement('textarea');
+            elemento.setAttribute("class", "form-control");
+            elemento.id = 'textarea' + incremento;
+            bloque.appendChild(elemento);
+
+            elemento1 = document.createElement('textarea');
+            elemento1.setAttribute("class", "form-control");
+            elemento1.setAttribute("readonly", "readonly");
+            elemento1.id = 'textarea' + incremento;
+            bloque1.appendChild(elemento1);
+
+            elemento2 = document.createElement('select');
+            elemento2.setAttribute("class", "form-control ");
+            elemento2.setAttribute("style", "height:60px");
+            elemento2.id = 'select' + incremento;
+            bloque2.appendChild(elemento2);
+
+
+            var br = document.createElement('br');
+            bloque.appendChild(br);
+            var br1 = document.createElement('br');
+            bloque1.appendChild(br1);
+            var br2 = document.createElement('br');
+            bloque2.appendChild(br2);
+
+        }
+
+
+        //Lo que se hará cuando se presione el boton de Borrar
+        function borrar(obj) {
+            incremento = incremento - 1;
+            bloque = document.getElementById('plazos');
+            bloque.removeChild(bloque.lastChild);
+        }
+    </script>
+
+    <script language="JavaScript">
+        //Creacion de Variable incremental
+        var incremento = 0;
+
+        //Lo que se hará cuando se presione el boton de Agregar
+        function agregar1(obj) {
+
+            incremento++;
+
+            //otro wizard .8
+            bloque3 = document.getElementById('plazos3');
+            bloque4 = document.getElementById('plazos4');
+            bloque5 = document.getElementById('plazos5');
+            bloque6 = document.getElementById('plazos6');
+            bloque7 = document.getElementById('plazos7');
+
+
+
+            //otro wizard .8
+            elemento3 = document.createElement('input');
+            elemento3.setAttribute("class", "form-control ");
+            elemento3.id = 'input' + incremento;
+            bloque3.appendChild(elemento3);
+
+            elemento4 = document.createElement('input');
+            elemento4.setAttribute("class", "form-control ");
+            elemento4.id = 'input' + incremento;
+            bloque4.appendChild(elemento4);
+
+            elemento5 = document.createElement('input');
+            elemento5.setAttribute("class", "form-control ");
+            elemento5.id = 'input' + incremento;
+            bloque5.appendChild(elemento5);
+
+            elemento6 = document.createElement('input');
+            elemento6.setAttribute("class", "form-control ");
+            elemento6.id = 'input' + incremento;
+            bloque6.appendChild(elemento6);
+
+            elemento7 = document.createElement('input');
+            elemento7.setAttribute("class", "form-control ");
+            elemento7.id = 'input' + incremento;
+            bloque7.appendChild(elemento7);
+
+
+            //otro wizard .8
+            var br3 = document.createElement('br');
+            bloque3.appendChild(br3);
+            var br4 = document.createElement('br');
+            bloque4.appendChild(br4);
+            var br5 = document.createElement('br');
+            bloque5.appendChild(br5);
+            var br6 = document.createElement('br');
+            bloque6.appendChild(br6);
+            var br7 = document.createElement('br');
+            bloque7.appendChild(br7);
+        }
+
+
+        //Lo que se hará cuando se presione el boton de Borrar
+        function borrar(obj) {
+            incremento = incremento - 1;
+            bloque = document.getElementById('plazos');
+            bloque.removeChild(bloque.lastChild);
+        }
+    </script>
+    <script>
+        function PasarValor() {
+            document.getElementById("nombre2").value = document.getElementById("nombre1").value;
+        }
+    </script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#addExp").validate({
+                rules: {
+                    areaExpU1: {
+                        required: true,
+                        minlength: 3
+                    },
+                    age: {
+                        required: true,
+                        number: true,
+                        min: 18
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    weight: {
+                        required: {
+                            depends: function(elem) {
+                                return $("#age").val() > 50
+                            }
+                        },
+                        number: true,
+                        min: 0
+                    }
+                },
+                messages: {
+                    areaExpU1: {
+                        minlength: "Name should be at least 3 characters"
+                    },
+                    age: {
+                        required: "Please enter your age",
+                        number: "Please enter your age as a numerical value",
+                        min: "You must be at least 18 years old"
+                    },
+                    email: {
+                        email: "The email should be in the format: abc@domain.tld"
+                    },
+                    weight: {
+                        required: "People with age over 50 have to enter their weight",
+                        number: "Please enter your weight as a numerical value"
+                    }
+                }
+            });
+        });
+    </script> -->
+
+<script src="runtime.0e49e2b53282f40c8925.js" defer=""></script><script src="polyfills.8c151b8375e767ff858f.js" defer=""></script><script src="main.a8e38b0cc9a08fc1d085.js" defer=""></script></body>
+
+</html>

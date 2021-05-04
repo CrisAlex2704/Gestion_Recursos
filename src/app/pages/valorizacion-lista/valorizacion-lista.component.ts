@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GrupoOcupacional } from 'src/app/models/grupoOcupacional.models';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -9,6 +9,8 @@ import { ValorizacionService } from 'src/app/services/valorizacion.service';
 import { GrupoOcupacionalService } from '../../../../../frontend1/src/app/services/grupo-ocupacional.service';
 import { DetalleValorizacionService } from '../../services/detalle-valorizacion.service';
 import { DetalleValorizacion } from '../../models/detalleValorizacion';
+import { UpdPuestoService } from 'src/app/services/upd-puesto.service';
+import { URL_SERVICE } from 'src/app/config/config';
 
 @Component({
   selector: 'app-valorizacion-lista',
@@ -17,6 +19,7 @@ import { DetalleValorizacion } from '../../models/detalleValorizacion';
 })
 export class ValorizacionListaComponent implements OnInit {
 
+  idEmp = localStorage.getItem('empresaFact');
   
   contVal: String = "";
   puesto: String = "";
@@ -43,6 +46,8 @@ export class ValorizacionListaComponent implements OnInit {
   gruposOcupacionales:GrupoOcupacional[] = []; 
   detallevalorizaciones: DetalleValorizacion[] = [];
 
+  idModificar: string = "";
+
   totales:string[] = [];
   @ViewChild('closebuttonadd', { static: false }) closebuttonadd;
   @ViewChild('closebuttonupd', { static: false }) closebuttonupd;
@@ -53,8 +58,12 @@ export class ValorizacionListaComponent implements OnInit {
     public toastr: ToastrService,
     public _valorizacion: ValorizacionService,
     public _grupoOcupacional: GrupoOcupacionalService,
-    public _detalleValorizacion: DetalleValorizacionService
-  ) { }
+    public _detalleValorizacion: DetalleValorizacionService,
+    public _updPuesto: UpdPuestoService,
+    public ruta: ActivatedRoute,
+  ) {
+    this.idModificar = this.ruta.snapshot.paramMap.get("idpuesto");
+   }
 
   ngOnInit(): void {
 
@@ -172,8 +181,17 @@ getDataDetalleValorizacion(detallevalorizacion: DetalleValorizacion) {
   this.dataUpdDetalleVal = true;
 }
 
-getData(){
 
+generarpdf(id: string) {
+  console.log(id);
+  this._updPuesto.generarPDFVal(id).subscribe(resp => {
+    console.log(resp);
+    if (resp.ok == true) {
+      console.log(resp);
+      let filename = URL_SERVICE.url + "/getpdf/" + this.idEmp + "_ficahtecnica" + id + ".pdf";
+      window.open(filename);
+    }
+  })
 }
 }
 

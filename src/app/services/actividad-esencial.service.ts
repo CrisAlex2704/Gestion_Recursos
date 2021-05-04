@@ -153,6 +153,22 @@ searchActEsen(termino: string){
 }
 
 
+buscarActEsenID(idcono: string){
+  let token = localStorage.getItem('tokenFact');
+  const headers = new HttpHeaders({
+    token
+  });
+
+  const url = URL_SERVICE.url + '/actividadEsencial/bucarid/' + idcono + "/" + this.idEmp;
+
+  return this.http.get( url, {headers} )
+              .map( (resp: any) =>
+                  resp.actividadEsencial
+              );
+}
+
+
+
 countActEsen(){
   const token = localStorage.getItem('tokenFact');
   const headers = new HttpHeaders({

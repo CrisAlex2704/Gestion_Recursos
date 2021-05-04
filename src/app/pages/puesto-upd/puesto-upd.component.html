@@ -189,7 +189,7 @@
 
                             </div>
                             <div class="tab-pane" id="tab2">
-                                <form #addPuestoM="ngForm" id="addM" (ngSubmit)="updPuestoMision(addPuestoM);">
+                                <form #addPuestoM="ngForm" id="addMU" (ngSubmit)="updPuestoMision(addPuestoM);">
 
 
                                     <br>
@@ -215,7 +215,7 @@
                             </div>
 
                             <div class="tab-pane" id="tab3">
-                                <form #addPuestoR="ngForm" id="addR" (ngSubmit)="updPuestoRIE(addPuestoR);">
+                                <form #addPuestoR="ngForm" id="addRU" (ngSubmit)="updPuestoRIE(addPuestoR);">
 
 
                                     <br>
@@ -264,7 +264,7 @@
 
                                                                     <div class="input-group">
 
-                                                                        <select id="descExp" class="form-control " name="descExpU" [ngModel]="descExpU" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                                                        <select id="descExp" class="form-control " name="descExp" [ngModel]="descExp" data-title="Seleccionar" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
 
                                       
                                       <option *ngFor="let experiencia of experiencias" [value]="experiencia.descripcion">
@@ -327,7 +327,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Area de Conocimiento</label>
-                                                <input class="form-control" type="text" name="areaExpU1" id="areaExpU1" [value]="areaExpU1" [ngModel]="areaExpU1" />
+                                                <input class="form-control" type="text" name="areaExpU1" id="areaExpU1" [value]="areaExpU1" [ngModel]="expe[0].area" />
                                             </div>
                                         </div>
                                     </div>
@@ -361,9 +361,9 @@
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label class="control-label">Tiempo</label>
-                                                <input id="tiempoExp" [ngModel]="tiempoExp" class="form-control" type="number" name="tiempoExp" />
-                                                <input id="tiempoExp1" [ngModel]="tiempoExp1" class="form-control" type="number" name="tiempoExp1" />
-                                                <input id="tiempoExp2" [ngModel]="tiempoExp2" class="form-control" type="number" name="tiempoExp2" />
+                                                <input id="tiempoExp" [ngModel]="expe[0].tiempo" class="form-control" type="number" name="tiempoExp" />
+                                                <input id="tiempoExp1" [ngModel]="expe[1].tiempo" class="form-control" type="number" name="tiempoExp1" />
+                                                <input id="tiempoExp2" [ngModel]="expe[2].tiempo" class="form-control" type="number" name="tiempoExp2" />
 
 
                                             </div>
@@ -371,7 +371,7 @@
                                         <div class="col-md-8 col-md-offset-1">
                                             <div class="form-group">
                                                 <label class="control-label">Especificidad de la Experiencia</label>
-                                                <textarea cols="60" rows="6" class="form-control" id="especificidadExp" name="especificidadExp" [ngModel]="especificidadExp" class="form-control"></textarea>
+                                                <textarea cols="60" rows="6" class="form-control" id="especificidadExp" name="especificidadExp" [ngModel]="expe[0].especificidad" class="form-control"></textarea>
                                             </div>
                                         </div>
 
@@ -386,7 +386,7 @@
 
 
                             <div class="tab-pane" id="tab6">
-                                <form #addPuestoCap="ngForm" id="addCap" (ngSubmit)="updPuestoCapacidad(addPuestoCap);">
+                                <form #addPuestoCap="ngForm" id="addCapU" (ngSubmit)="updPuestoCapacidad(addPuestoCap);">
 
                                     <br>
                                     <br>
@@ -411,7 +411,7 @@
 
                             <div class="tab-pane" id="tab7">
 
-                                <form #addActividadCargo="ngForm" id="addC" (ngSubmit)="addActividadesCargos(addActividadCargo); addActividadCargo.reset()">
+                                <form #addActividadCargo="ngForm" id="addCarg" (ngSubmit)="addActividadesCargos(addActividadCargo);">
 
                                     <br>
                                     <br>
@@ -568,7 +568,7 @@
 
                             <div class="tab-pane" id="tab9">
                                 <!-- (ngSubmit)="addGruposActividadesEsenciales();" -->
-                                <form id="addCap">
+                                <form id="addActEsen">
 
                                     <br>
                                     <br>
@@ -590,10 +590,10 @@
                                                         <tr *ngFor="let Ae of prueba; let i = index">
 
                                                             <td>{{Ae.descripcion}}</td>
-                                                            <td><select #valueComp (change)="selectcomp(i,valueComp.value);" select name="cities" class="form-control">
+                                                            <td><select #valueComp (change)="selectcomp(i,valueComp.value);" [ngModel]="pidTipo[i]" select name="cities" class="form-control">
 
-                                  <option  disabled="">{{pnomProv}}</option>
-
+                                      
+                                  <option  name="desc" [value]="pidTipo[i]" hidden >{{pnomProv[i]}}</option>
                                   <option *ngFor="let conocimiento of conocimientos" value="{{conocimiento._id}}">
                                     {{conocimiento.descripcion}}</option>
 
@@ -622,7 +622,7 @@
 
                             <div class="tab-pane" id="tab10">
 
-                                <form #addCompetenciaTec="ngForm" id="addC" (ngSubmit)="addCompTecPuestos(addCompetenciaTec); addCompetenciaTec.reset()">
+                                <form #addCompetenciaTec="ngForm" id="addCompTec" (ngSubmit)="addCompTecPuestos(addCompetenciaTec);">
 
                                     <br>
                                     <br>
@@ -715,7 +715,7 @@
 
                             <div class="tab-pane" id="tab11">
 
-                                <form #addCompetenciaCon="ngForm" id="addCC" (ngSubmit)="addCompCondPuestos(addCompetenciaCon); addCompetenciaCon.reset()">
+                                <form #addCompetenciaCon="ngForm" id="addCCondPues" (ngSubmit)="addCompCondPuestos(addCompetenciaCon); ">
 
                                     <br>
                                     <br>
@@ -828,7 +828,7 @@
         <div class="col-md-6 col-md-offset-1">
             <div style=" margin-top: 175px !important;">
                 <div class="content text-center" role="document">
-                    <form #addAmbito="ngForm" id="addC" (ngSubmit)=" agregarNuevoCono(); addAmbito.reset()">
+                    <form #addAmbito="ngForm" id="addCA" (ngSubmit)=" agregarNuevoCono(); addAmbito.reset()">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Agregar Conocimiento</h5>

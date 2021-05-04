@@ -33,7 +33,7 @@
 
 <body>
 
-   
+
     <app-root></app-root>
 
 
@@ -97,7 +97,6 @@
     <script type="text/javascript">
         $().ready(function() {
 
-            // Code for the Validator
             var $validator = $('.card-wizard form').validate({
                 rules: {
                     firstname: {
@@ -121,6 +120,137 @@
                     $(element).parent().addClass('has-success').removeClass('has-error');
                 }
             });
+            // Code for the Validator
+            // var $validator6 = $('#addExp').validate({
+            //     rules: {
+            //         descExp: {
+            //             required: true
+            //         },
+            //         descExp1: {
+            //             required: true
+            //         },
+            //         descExp2: {
+            //             required: true
+            //         },
+            //         radio11: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator1 = $('#addC').validate({
+            //     rules: {
+            //         codigoPuest: {
+            //             required: true
+            //         },
+            //         denominacionPuest: {
+            //             required: true
+            //         },
+            //         radio10: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator2 = $('#addCarg').validate({
+            //     rules: {
+            //         desActCarg: {
+            //             required: true
+            //         },
+            //         radio12: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator3 = $('#addActEsen').validate({
+            //     rules: {
+            //         conocimiento: {
+            //             required: true
+            //         },
+            //         radio13: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator4 = $('#addCompTec').validate({
+            //     rules: {
+            //         competenciaCt: {
+            //             required: true
+            //         },
+            //         CompTecObs: {
+            //             required: true
+            //         },
+            //         radio15: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+            // var $validator5 = $('#addCCondPues').validate({
+            //     rules: {
+            //         competenciaCc: {
+            //             required: true
+            //         },
+            //         compCondObs: {
+            //             required: true
+            //         },
+            //         radio16: {
+            //             required: true
+            //         },
+            //         radio17: {
+            //             required: true
+            //         },
+            //         radio18: {
+            //             required: true
+            //         }
+            //     },
+
+            //     highlight: function(element) {
+            //         $(element).parent().addClass('has-error').removeClass('has-success');
+            //     },
+            //     success: function(element) {
+            //         $(element).parent().addClass('has-success').removeClass('has-error');
+            //     }
+            // });
+
+
 
             // Wizard Initialization
             $('.card-wizard').bootstrapWizard({
@@ -129,11 +259,43 @@
                 'previousSelector': '.btn-previous',
 
                 onNext: function(tab, navigation, index) {
+
                     var $valid = $('.card-wizard form').valid();
                     if (!$valid) {
                         $validator.focusInvalid();
                         return false;
                     }
+
+                    // var $valid6 = $('#addExp ').valid();
+                    // if (!$valid6) {
+                    //     $validator6.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid1 = $('#addC').valid();
+                    // if (!$valid1) {
+                    //     $validator1.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid2 = $('#addCarg').valid();
+                    // if (!$valid2) {
+                    //     $validator2.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid3 = $('#addActEsen').valid();
+                    // if (!$valid3) {
+                    //     $validator3.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid4 = $('#addCompTec').valid();
+                    // if (!$valid4) {
+                    //     $validator4.focusInvalid();
+                    //     return false;
+                    // }
+                    // var $valid5 = $('#addCCondPues').valid();
+                    // if (!$valid5) {
+                    //     $validator5.focusInvalid();
+                    //     return false;
+                    // }
                 },
 
                 onInit: function(tab, navigation, index) {
@@ -496,6 +658,55 @@
             document.getElementById("nombre2").value = document.getElementById("nombre1").value;
         }
     </script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#addExp").validate({
+                rules: {
+                    areaExpU1: {
+                        required: true,
+                        minlength: 3
+                    },
+                    age: {
+                        required: true,
+                        number: true,
+                        min: 18
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    weight: {
+                        required: {
+                            depends: function(elem) {
+                                return $("#age").val() > 50
+                            }
+                        },
+                        number: true,
+                        min: 0
+                    }
+                },
+                messages: {
+                    areaExpU1: {
+                        minlength: "Name should be at least 3 characters"
+                    },
+                    age: {
+                        required: "Please enter your age",
+                        number: "Please enter your age as a numerical value",
+                        min: "You must be at least 18 years old"
+                    },
+                    email: {
+                        email: "The email should be in the format: abc@domain.tld"
+                    },
+                    weight: {
+                        required: "People with age over 50 have to enter their weight",
+                        number: "Please enter your weight as a numerical value"
+                    }
+                }
+            });
+        });
+    </script> -->
+
 </body>
 
 </html>

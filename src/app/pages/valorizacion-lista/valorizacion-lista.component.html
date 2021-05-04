@@ -52,7 +52,7 @@
                             </thead>
                             <tbody *ngFor="let valorizacion of valorizaciones; let i = index">
                                 <tr>
-                                    <td class="{{valorizacion.estado}}">{{valorizacion.puesto.denominacion}}</td>
+                                    <td class="{{valorizacion.estado}}">{{valorizacion.puesto._id}}</td>
                                     <td class="{{valorizacion.estado}}">{{valorizacion.total}}</td>
                                     <td class="{{valorizacion.estado}}">{{totales[i]}}</td>
 
@@ -60,6 +60,10 @@
 
                                         <a type="button" rel="tooltip" title="Ver" (click)="getdetalleValorizacion(valorizacion._id)" data-toggle="modal" data-target="#modalverVal" class="btn btn-info btn-simple btn-xs">
                                             <i class="fa fa-eye"></i>
+                                        </a>
+
+                                        <a type="button" rel="tooltip" title="imprimir" (click)="generarpdf(valorizacion.puesto._id);" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-print"></i>
                                         </a>
 
                                     </td>

@@ -19,6 +19,7 @@ import {
   Puesto
 } from '../../models/puesto.models';
 import {
+  FormGroup,
   NgForm
 } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -183,6 +184,8 @@ export class PuestoAddComponent implements OnInit {
 
   prueba: ActividadCargo[] = [];
 
+
+
   @ViewChild('closebuttonadd', {
     static: false
   }) closebuttonadd;
@@ -242,6 +245,7 @@ export class PuestoAddComponent implements OnInit {
         window.location.reload();
       })
   }
+
 
   AdditemActEsen(form: NgForm) {
 
@@ -850,6 +854,7 @@ export class PuestoAddComponent implements OnInit {
 
   }
 
+
   updPuestos(form: NgForm) {
     console.log(form.value);
     this._puesto.updPuesto(
@@ -978,7 +983,6 @@ export class PuestoAddComponent implements OnInit {
 
   }
 
-
   eliminarCompCondPuesto(id: string) {
     Swal.fire({
       icon: 'error',
@@ -1006,7 +1010,6 @@ export class PuestoAddComponent implements OnInit {
     })
 
   }
-
 
   elimarCompTecPuesto(id: string) {
     Swal.fire({
@@ -1036,8 +1039,6 @@ export class PuestoAddComponent implements OnInit {
 
   }
 
-
-
   eliminarActividadEsencial(form: ActividadEsencial) {
     Swal.fire({
       icon: 'error',
@@ -1065,8 +1066,6 @@ export class PuestoAddComponent implements OnInit {
     })
 
   }
-
-
 
   addRoles(rol: NgForm) {
     for (let i = 0; i < this.roles.length; i++) {
@@ -1101,7 +1100,6 @@ export class PuestoAddComponent implements OnInit {
     })
   }
 
-
   addAmbitos(ambito: NgForm) {
     for (let i = 0; i < this.ambitos.length; i++) {
       if (ambito.value.desAmb === this.ambitos[i].descripcion) {
@@ -1134,7 +1132,6 @@ export class PuestoAddComponent implements OnInit {
     })
   }
 
-
   ordenar() {
     this._activdadCargo.getActividadCargoOr(this.IDModificar).subscribe(resp => {
       let actpuesto = resp.actividadCargo;
@@ -1152,8 +1149,8 @@ export class PuestoAddComponent implements OnInit {
 
       }
       let a = 0;
-      if (actpuesto.length > 5) {
-        a = 5;
+      if (actpuesto.length > 6) {
+        a = 6;
 
       } else {
         a = actpuesto.length;
@@ -1166,7 +1163,6 @@ export class PuestoAddComponent implements OnInit {
 
     })
   }
-
 
   generarpdf() {
     this._updPuesto.generarPDFA4(this.IDModificar).subscribe(resp => {

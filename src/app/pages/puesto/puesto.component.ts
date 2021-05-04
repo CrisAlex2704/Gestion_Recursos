@@ -148,11 +148,28 @@ export class PuestoComponent implements OnInit {
   }
 
   modificarP(idP){
-    this.router.navigate(['/updPuesto/'+idP]);
+
+    this.router.navigate(['/updPuesto/'+idP])
+  
+    .then(()=> {
+      setTimeout(() => {
+        window.location.reload();
+      }, 900);
+      
+    })
+   
   }
 
   CalificarP(idP){
-    this.router.navigate(['/Valorizacion/'+idP]);
+    this.router.navigate(['/Valorizacion/'+idP])
+  
+    .then(()=> {
+      setTimeout(() => {
+        window.location.reload();
+      }, 900);
+      
+    })
+   
   }
   
   
@@ -162,6 +179,13 @@ export class PuestoComponent implements OnInit {
     window.location.reload();
   })
   }
+
+  // CargaUpd(idpp){
+  //   this.router.navigate(['/updPuesto/'+idpp])
+  // .then(()=> {
+  //   window.location.reload();
+  // })
+  // }
 
   addPuestos(puesto:NgForm){
     for (let i = 0; i < this.puestos.length; i++) {

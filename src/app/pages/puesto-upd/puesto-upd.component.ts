@@ -99,6 +99,9 @@ export class PuestoUpdComponent implements OnInit {
   experiencias: Experiencia[] = [];
   experiencias1: Experiencia[] = [];
   experiencias2: Experiencia[] = [];
+  pidTipo : string[] = [];
+  pnomProv: string[] = [];
+
   ArrayActEse: string[] = [];
   ArrayComplemento: string[] = [];
   ArrayExperiencia: string[] = [];
@@ -260,10 +263,15 @@ export class PuestoUpdComponent implements OnInit {
     array.push(this.descExpU);
     array.push(this.descExp1U);
     array.push(this.descExp2U);
+    console.log(this.descExpU);
 
+    this.getExperi();
+    console.log(this.experienciasPuestosb);
     for (let i = 0; i < array.length; i++) {
 
+      this.idupdExpPuest[i] = this.experienciasPuestosb[i]._id;
 
+      console.log(this.idupdExpPuest[i]);
       this._experiencia.getExperienciaDesc(array[i]).subscribe(result => {
 
         this._exepienciaPuesto.updExpPuest(
@@ -290,7 +298,6 @@ export class PuestoUpdComponent implements OnInit {
   }
 
   getExperi() {
-
     this._exepienciaPuesto.getExpPuesto(this.idModificar).subscribe(resp => {
       console.log(resp);
       this.experienciasPuestosb = resp.expPuesto;
@@ -298,16 +305,26 @@ export class PuestoUpdComponent implements OnInit {
     })
 
   }
+
+  getExperienciaPuesto() {
+    this._exepienciaPuesto.getExperienciaPuesto().subscribe(resp => {
+      console.log(resp);
+      this.experienciasPuestos = resp.expPuesto;
+    })
+  }
+
+  
+  
   getValorExp(form: NgForm) {
 
-
-
     console.log(form.value);
-    this.descExpU = this.descExp;
-    this.descExp1U = this.descExp1;
-    this.descExp2U = this.descExp2;
+    this.descExpU = form.value.descExp;
+    this.descExp1U = form.value.descExp1;
+    this.descExp2U = form.value.descExp2;
     this.areaExpU1 = form.value.areaExpU1;
   }
+
+
   addActividadesCargos(actividadCargo: NgForm) {
     console.log(actividadCargo.value);
     this._activdadCargo.agregarActividadCargo(
@@ -511,8 +528,8 @@ export class PuestoUpdComponent implements OnInit {
 
       }
       let a = 0;
-      if (actpuesto.length > 5) {
-        a = 5;
+      if (actpuesto.length > 6) {
+        a = 6;
 
       } else {
         a = actpuesto.length;
@@ -552,7 +569,7 @@ export class PuestoUpdComponent implements OnInit {
       coincide = false;
       for (let i = 0; i < this.actEsenc.length; i++) {
         console.log(coincide + "(" + i + "-" + j + ")");
-
+console.log(this.actEsenc[i].descripcion+ " === " + this.prueba[j].descripcion);
         if (this.actEsenc[i].descripcion == this.prueba[j].descripcion) {
           coincide = true;
         }
@@ -563,10 +580,15 @@ export class PuestoUpdComponent implements OnInit {
         this.temp[cont] = j;
         cont = cont + 1;
       } else {
-        this.nuevoConoc[j].conocimientoAdicional = this.actEsenc[j].conocimientoAdicional["_id"];
+        this.nuevoConoc[j].conocimientoAdicional = this.actEsenc[j].conocimientoAdicional;
       }
     }
     console.log(this.nuevoConoc);
+    for (let i = 0; i < this.nuevoConoc.length; i++) {
+      this.pidTipo[i] = this.nuevoConoc[i]._id;
+      this.pnomProv[i] = this.nuevoConoc[i].conocimientoAdicional["descripcion"];
+    }
+
     if (this.temp.length > 0) {
       this.modalupd = true;
     }
@@ -581,7 +603,10 @@ export class PuestoUpdComponent implements OnInit {
 
   addcompPos(index: number, comple: string) {
 
-    this.nuevoConoc[index].conocimientoAdicional = comple;
+    // this._actividadEsencial.buscarActEsenID(comple).subscribe(resp=>{
+    //   console.log(resp);
+      this.nuevoConoc[index].conocimientoAdicional = comple;
+    // })
     console.log(this.nuevoConoc);
 
   }
@@ -603,9 +628,19 @@ export class PuestoUpdComponent implements OnInit {
 
     }
     // if (this.actEsenc.length == cont) {
+      console.log(this.nuevoConoc);
     for (let i = 0; i < this.nuevoConoc.length; i++) {
 
       this._actividadEsencial.agregarActividadEsencial(this.nuevoConoc[i].descripcion, this.nuevoConoc[i].puesto, this.nuevoConoc[i].conocimientoAdicional).subscribe(resp1 => {
+      
+        this.getActividadEsencial();
+        console.log(this.actividadesEsenciales); 
+        
+        for (let i = 0; i < resp1.length; i++) {
+          this.pidTipo[i] = resp1[i]._id;
+          this.pnomProv[i] = resp1[i].conocimientoAdicional["descripcion"];
+        }
+        
         console.log(resp1);
       })
     }
@@ -704,13 +739,7 @@ export class PuestoUpdComponent implements OnInit {
     })
   }
 
-  getExperienciaPuesto() {
-    this._exepienciaPuesto.getExperienciaPuesto().subscribe(resp => {
-      console.log(resp);
-      this.experienciasPuestos = resp.expPuesto;
-    })
-  }
-
+  
   updExperienciasTimEsp(exepienciaPuesto: NgForm) {
 
 

@@ -33,7 +33,7 @@
                                             <div class="form-group">
                                                 <label class="control-label">Codigo</label>
 
-                                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control">
+                                                <input type="text" id="codigoPuest" name="codigoPuest" [ngModel]="codigoPuest" class="form-control" required>
 
                                             </div>
                                         </div>
@@ -230,15 +230,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+                                    <input style="margin-top: 70px;" value="SUBMIT" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
 
-                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
+                                    <input style="margin-top: 70px;" value="SUBMIT" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente">
                                 </form>
                             </div>
 
                             <div class="tab-pane" id="tab4">
 
-                                <form #addExperienciaPuesto="ngForm" id="addExp" (ngSubmit)="getValorExp(addExperienciaPuesto); ">
+                                <form #addExperienciaPuesto="ngForm" id="addExp" (ngSubmit)="getValorExp(addExperienciaPuesto);">
+                                    <ul class="errorMessages"></ul>
 
 
                                     <br>
@@ -334,9 +335,9 @@
                                         </div>
                                     </div>
 
-                                    <input style="margin-top: 70px;" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
+                                    <input style="margin-top: 70px;" value="SUBMIT" type="submit" class="btn btn-default btn-fill btn-wd btn-previous pull-left" value="Regresar">
 
-                                    <input style="margin-top: 70px;" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right" value="Siguiente" *ngIf="addExperienciaPuesto.valid">
+                                    <input style="margin-top: 70px;" value="SUBMIT" type="submit" class="btn btn-info btn-fill btn-wd btn-next pull-right " value="Siguiente">
 
                                 </form>
                             </div>
@@ -410,7 +411,7 @@
                             </div>
 
                             <div class="tab-pane" id="tab7">
-                                <form #addActividadCargo="ngForm" id="addC" (ngSubmit)="addActividadesCargos(addActividadCargo); addActividadCargo.reset()">
+                                <form #addActividadCargo="ngForm" id="addCarg" (ngSubmit)="addActividadesCargos(addActividadCargo);">
 
                                     <br>
                                     <br>
@@ -571,7 +572,7 @@
                             </div>
 
                             <div class="tab-pane" id="tab9">
-                                <form id="addCap" (ngSubmit)="addGruposActividadesEsenciales();">
+                                <form id="addActEsen" (ngSubmit)="addGruposActividadesEsenciales();">
 
                                     <br>
                                     <br>
@@ -594,7 +595,7 @@
 
                                                             <td>{{Ae.descripcion}}</td>
 
-                                                            <td><select id="conocimiento" #valueComp (change)="selectcomp(i,valueComp.value);" select name="conocimiento" class="form-control">
+                                                            <td><select id="conocimiento" #valueComp (change)="selectcomp(i,valueComp.value);" [ngModel]="conocimiento" select name="conocimiento" class="form-control">
 
                                   <!-- <option [value]="conocimiento"  disabled="">{{pnomProv}}</option> -->
 
@@ -621,7 +622,7 @@
 
                             <div class="tab-pane" id="tab10">
 
-                                <form #addCompetenciaTec="ngForm" id="addC" (ngSubmit)="addCompTecPuestos(addCompetenciaTec); addCompetenciaTec.reset()">
+                                <form #addCompetenciaTec="ngForm" id="addCompTec" (ngSubmit)="addCompTecPuestos(addCompetenciaTec); ">
 
                                     <br>
                                     <br>
@@ -647,7 +648,7 @@
                                         <div style=" margin-right: 18px !important;" class="col-md-5 col-md-offset-1">
                                             <div class="form-group">
                                                 <label class="control-label">Nivel</label>
-                                                <select #Compveri (change)="verificarId(Compveri.value);" id="CompTecObs" name="CompTecObs" ngModel select class="form-control">
+                                                <select #Compveri (change)="verificarId(Compveri.value);" id="CompTecObs" name="CompTecObs" ngModel="CompTecObs" select class="form-control">
                         <option hidden value="empty">seleccionar</option>
                         <option  *ngFor="let ctcomportamiento of ctcomportamientos"  [value]="ctcomportamiento._id">{{ctcomportamiento.nivel}}</option>
 
@@ -718,7 +719,7 @@
 
                             <div class="tab-pane" id="tab11">
 
-                                <form #addCompetenciaCon="ngForm" id="addCC" (ngSubmit)="addCompCondPuestos(addCompetenciaCon); addCompetenciaCon.reset()">
+                                <form #addCompetenciaCon="ngForm" id="addCCondPues" (ngSubmit)="addCompCondPuestos(addCompetenciaCon);">
 
                                     <br>
                                     <br>
@@ -908,7 +909,7 @@
         <div class="col-md-6 col-md-offset-1">
             <div style=" margin-top: 175px !important;">
                 <div class="content text-center" role="document">
-                    <form #addRol="ngForm" id="addC" (ngSubmit)="addRoles(addRol); addRol.reset()">
+                    <form #addRol="ngForm" id="addCModal" (ngSubmit)="addRoles(addRol); addRol.reset()">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Agregar Roles</h5>
@@ -960,7 +961,7 @@
             <div class="col-md-6 col-md-offset-1">
                 <div style=" margin-top: 175px !important;">
                     <div class="content text-center" role="document">
-                        <form #addAmbito="ngForm" id="addC" (ngSubmit)="addAmbitos(addAmbito); addAmbito.reset()">
+                        <form #addAmbito="ngForm" id="addCModalw" (ngSubmit)="addAmbitos(addAmbito); addAmbito.reset()">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Agregar Ambitos</h5>

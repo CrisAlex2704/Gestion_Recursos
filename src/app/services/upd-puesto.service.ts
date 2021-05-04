@@ -45,4 +45,23 @@ generarPDFA4(puesto){
       );
 }
 
+
+
+generarPDFVal(puesto){
+
+  let token = localStorage.getItem('tokenFact');
+
+  const headers = new HttpHeaders({
+    token
+  });
+
+  const url = URL_SERVICE.url + '/listaval/'+this.idEmp+'/'+puesto;
+
+  return this.http.get( url, {headers} )
+      .map( (resp: any) =>
+          resp
+      );
+}
+
+
 }
